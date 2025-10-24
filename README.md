@@ -125,3 +125,11 @@ All errors are returned in the standard format with `success: false` and a descr
 - Email search requires listing all workspace members (no direct email search endpoint in Shortcut)
 - Pagination limits are set by default to avoid very large responses
 - A valid API token with read permissions in the workspace is required
+
+## Contributing
+
+We welcome contributions! If you have improvements, bug fixes, or new features, please feel free to submit a pull request. Your contributions help make this tool better for everyone.
+
+## Acknowledgments
+
+Thanks to Fredy Bustos for creating and maintaining this MCP server for Shortcut integration. This project was built for educational purposes to demonstrate MCP integration with external APIs.
