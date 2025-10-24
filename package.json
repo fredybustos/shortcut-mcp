@@ -6,9 +6,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": {
+    "name": "Fredy Bustos",
+    "email": "afredybustos@gmail.com",
+    "url": "https://github.com/fredybustos/shortcut-mcp"
+  },
   "license": "ISC",
   "description": "A Shortcut integration using Model Context Protocol (MCP)",
+  "repository": "https://github.com/fredybustos/shortcut-mcp",
+  "homepage": "https://github.com/fredybustos/shortcut-mcp",
+  "bugs": "https://github.com/fredybustos/shortcut-mcp/issues",
+  "keywords": ["mcp", "shortcut", "model-context-protocol", "ai", "automation"],
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.18.0",
     "zod": "3.25.76"
