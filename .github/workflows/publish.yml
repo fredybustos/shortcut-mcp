@@ -1,0 +1,54 @@
+name: Publish to npm
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  publish:
+    name: Build & Publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Verify server starts and exposes all tools
+        run: |
+          RESPONSE=$(printf \
+            '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"ci","version":"1.0"}}}\n{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}\n' \
+            | SHORTCUT_API_TOKEN=ci-fake-token node dist/main.js 2>/dev/null)
+
+          TOOLS=(
+            "search_user_by_email"
+            "get_user_epics_by_email"
+            "get_user_stories_by_email"
+            "get_user_work_by_email"
+            "get_stories_by_due_date"
+          )
+
+          for tool in "${TOOLS[@]}"; do
+            if echo "$RESPONSE" | grep -q "\"$tool\""; then
+              echo "✅ $tool"
+            else
+              echo "❌ $tool — not found in server response"
+              exit 1
+            fi
+          done
+
+      - name: Publish
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

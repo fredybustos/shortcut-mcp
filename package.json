@@ -1,0 +1,40 @@
+{
+  "name": "shortcut-mcp",
+  "version": "1.0.0",
+  "main": "dist/main.js",
+  "bin": {
+    "shortcut-mcp": "dist/main.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "dev": "tsx src/main.ts"
+  },
+  "author": {
+    "name": "Fredy Bustos",
+    "email": "afredybustos@gmail.com",
+    "url": "https://github.com/fredybustos/shortcut-mcp"
+  },
+  "license": "ISC",
+  "description": "A Shortcut integration using Model Context Protocol (MCP)",
+  "repository": "https://github.com/fredybustos/shortcut-mcp",
+  "homepage": "https://github.com/fredybustos/shortcut-mcp",
+  "bugs": "https://github.com/fredybustos/shortcut-mcp/issues",
+  "keywords": ["mcp", "shortcut", "model-context-protocol", "ai", "automation"],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.18.0",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "24.3.2",
+    "tsx": "^4.19.3",
+    "typescript": "5.9.2"
+  }
+}
