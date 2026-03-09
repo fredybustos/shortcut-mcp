@@ -1,6 +1,6 @@
 {
   "name": "shortcut-mcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/main.js",
   "bin": {
     "shortcut-mcp": "dist/main.js"
